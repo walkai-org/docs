@@ -1,0 +1,75 @@
+site_name: walk:ai
+site_url: https://walkai-org.github.io/
+docs_dir: ./en/docs
+repo_url: https://github.com/walkai-org/walkai-nos
+repo_name: walkai-nos
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+
+theme:
+  name: material
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: white
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: white
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+  features:
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotate
+    - navigation.instant
+    - navigation.sections
+    - navigation.tracking
+    - navigation.path
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Overview: overview.md
+  - Concepts:
+    - Jobs: concepts/jobs.md
+  - Modules: 
+    - nos: 
+      - Overview: nos/overview.md
+      - Prerequisites: nos/prerequisites.md
+      - Installation: nos/installation.md
+      - Configuration: nos/configuration.md
+      - Troubleshooting: nos/troubleshooting.md
+    - Application: 
+      - Overview: app/overview.md
+      - Prerequisites: app/prerequisites.md
+      - Installation: app/installation.md
+      - Configuration: app/configuration.md
+    - Command-Line tool: 
+      - Overview: cli/overview.md
+      - Prerequisites: cli/prerequisites.md
+      - Installation: cli/installation.md
+      - Configuration: cli/configuration.md
