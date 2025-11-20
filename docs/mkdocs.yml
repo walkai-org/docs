@@ -54,6 +54,7 @@ theme:
 
 nav:
   - Overview: overview.md
+  - VPN: vpn.md
   - Concepts:
     - Jobs: concepts/jobs.md
   - Modules: 
