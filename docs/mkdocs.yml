@@ -6,14 +6,20 @@ repo_name: walkai-nos
 
 plugins:
   - search
-
+  - mermaid2
+  
 markdown_extensions:
   - admonition
   - def_list
   - pymdownx.details
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:mermaid2.fence_mermaid_custom
+
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.tasklist:
@@ -57,6 +63,9 @@ nav:
   - VPN: vpn.md
   - Concepts:
     - Jobs: concepts/jobs.md
+    - Flowcharts:
+      - GPU Partitioner: concepts/gpu_partitioner.md
+      - MIG Agent: concepts/mig_agent.md
   - Modules: 
     - nos: 
       - Overview: nos/overview.md
