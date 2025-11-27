@@ -390,6 +390,119 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flowcharts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Flowcharts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/gpu_partitioner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Partitioner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/mig_agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MIG Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1066,19 +1179,6 @@
 </ul>
 </li>
 </ol>
-<p>IMAGE_ID="/subscriptions/ff93c44e-caa6-4caf-856a-03e71711c699/resourceGroups/benchmark/providers/Microsoft.Compute/galleries/benchmark/images/benchmark/versions/latest"
-az vm create \
-  -g benchmark -n benchmark -l westus \
-  --image "$IMAGE_ID" \
-  --size Standard_NC24ads_A100_v4 \
-  --specialized \
-  --security-type TrustedLaunch \
-  --admin-username azureuser \
-  --ssh-key-name saguirregaray1 \
-  --public-ip-sku Standard \
-  --os-disk-size-gb 200 \
-  --vnet-name benchmarkVNET \
-  --subnet benchmarkSubnet</p>
 
 
 
