@@ -1324,14 +1324,14 @@
 <h1 id="nos">nos</h1>
 <p><code>walk:ai nos</code> is the in-cluster component of the platform. It runs on your Kubernetes cluster and is responsible for two main tasks: dynamically partitioning GPUs so that Pods can share them efficiently, and exporting GPU and workload telemetry that powers the <code>walk:ai</code> application.</p>
 <h2 id="origin-and-architecture">Origin and architecture</h2>
-<p><code>walk:ai nos</code> is a fork of <a href="https://nebuly-ai.github.io/nos/overview/"><code>nos</code> by nebuly-ai</a>. We reuse its MIG Agent and GPU Partitioner components (deployed as DaemonSets) and extend them to support dynamic, runtime reconfiguration of MIG based on the current workload. On top of that, we add our own telemetry pipeline that continuously publishes cluster and GPU state to the <code>walk:ai</code> backend.</p>
+<p><code>walk:ai nos</code> is a fork of <a href="https://github.com/nebuly-ai/nos"><code>nos</code> by nebuly-ai</a>. We reuse its MIG Agent and GPU Partitioner components and extend them to support dynamic, runtime reconfiguration of MIG based on the current workload. On top of that, we add our own telemetry pipeline that continuously publishes cluster and GPU state to the <code>walk:ai</code> backend.</p>
 <h2 id="dynamic-gpu-partitioning">Dynamic GPU partitioning</h2>
 <p><code>walk:ai nos</code> allows Pods to request fractions of a physical GPU. Instead of assigning entire devices to a single Pod, GPUs are automatically split into MIG slices that can be requested by individual containers (for example, <code>1g.10gb</code>, <code>3g.40gb</code>, etc.). This lets multiple Pods share the same card and increases overall utilization.</p>
 <p>The partitioning is adjusted in real time:</p>
 <ul>
 <li><code>walk:ai</code> continuously watches pending Pods that request GPU fractions.</li>
-<li>Given the current and pending workload, it computes the best MIG configuration it can apply to fit as many of those Pods as possible.</li>
-<li>The MIG Agent and GPU Partitioner then apply that configuration on the nodes, creating or tearing down MIG instances as needed.</li>
+<li>Given the current and pending workload, the GPU Partitioner computes the best MIG configuration it can apply to fit as many of those Pods as possible.</li>
+<li>The MIG Agent then applies that configuration on the nodes, creating or tearing down MIG instances as needed.</li>
 </ul>
 <p>Under the hood, the GPU partitioning is implemented using <a href="../partitioning-modes-comparison/#multi-instance-gpu-mig">NVIDIA Multi-Instance GPU (MIG)</a> and builds directly on the upstream <code>nos</code> MIG Agent and GPU Partitioner.</p>
 <h2 id="telemetry-and-cluster-visibility">Telemetry and cluster visibility</h2>
@@ -1339,15 +1339,9 @@
 <ul>
 <li>Collect low-level GPU metrics (utilization, memory usage, MIG layout, allocations per Pod).</li>
 <li>Observe Jobs, Pods and their GPU requests.</li>
-<li>Periodically push a summarized view of this state to the <code>walk:ai</code> backend, which stores it in a fast, query-optimized datastore.</li>
+<li>Periodically push a summarized view of this state to an api endpoint you configure during installation.</li>
 </ul>
-<p>The web application then uses this data to render near real-time views of:</p>
-<ul>
-<li>How GPUs and MIG slices are currently allocated and utilized.</li>
-<li>Which Jobs and Pods are running or pending, and why.</li>
-<li>How dynamic partitioning decisions are affecting overall cluster efficiency.</li>
-</ul>
-<p>In this way, <code>walk:ai nos</code> is the bridge between Kubernetes and the higher-level platform: it enforces GPU partitioning decisions on the nodes, and it exposes a coherent picture of the cluster state so that users can understand and trust how their workloads are being scheduled.</p>
+<p>This funcionality is opt-in. If you do not declare the configuration related to it, the daemonset will not be deployed.</p>
 
 
 

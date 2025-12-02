@@ -1297,8 +1297,8 @@
 <tr>
 <td>clusterInfoExporter.config.endpoint</td>
 <td>string</td>
-<td><code>"https://example.com/cluster/insights"</code></td>
-<td>API endpoint that receives cluster information payloads.</td>
+<td><code>""</code></td>
+<td>API endpoint that receives cluster information payloads (exporter deploys only when set).</td>
 </tr>
 <tr>
 <td>clusterInfoExporter.config.httpTimeout</td>
@@ -1315,8 +1315,8 @@
 <tr>
 <td>clusterInfoExporter.enabled</td>
 <td>bool</td>
-<td><code>true</code></td>
-<td>Enable or disable the Cluster Info Exporter DaemonSet.</td>
+<td><code>false</code></td>
+<td>Enable or disable the Cluster Info Exporter DaemonSet (requires <code>clusterInfoExporter.config.endpoint</code>).</td>
 </tr>
 <tr>
 <td>clusterInfoExporter.fullnameOverride</td>
@@ -1439,16 +1439,10 @@
 <td>Sets the affinity config of the GPU Partitioner Pod.</td>
 </tr>
 <tr>
-<td>gpuPartitioner.batchWindowIdleSeconds</td>
+<td>gpuPartitioner.requeueIntervalSeconds</td>
 <td>int</td>
 <td><code>10</code></td>
-<td>Idle seconds before the GPU partitioner processes the current batch if no new pending Pods are created, and the timeout has not been reached.  Higher values make the GPU partitioner will potentially take into account more pending Pods when deciding the GPU partitioning plan, but the partitioning will be performed less frequently</td>
-</tr>
-<tr>
-<td>gpuPartitioner.batchWindowTimeoutSeconds</td>
-<td>int</td>
-<td><code>60</code></td>
-<td>Timeout of the window used by the GPU partitioner for batching pending Pods.  Higher values make the GPU partitioner will potentially take into account more pending Pods when deciding the GPU partitioning plan, but the partitioning will be performed less frequently</td>
+<td>Interval at which the GPU partitioner reconciler wakes up even without new Pod events</td>
 </tr>
 <tr>
 <td>gpuPartitioner.devicePlugin.config.name</td>
@@ -1479,60 +1473,6 @@
 <td>string</td>
 <td><code>""</code></td>
 <td></td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent</td>
-<td>object</td>
-<td>-</td>
-<td>Configuration of the GPU Agent component of the GPU Partitioner.</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.image.pullPolicy</td>
-<td>string</td>
-<td><code>"IfNotPresent"</code></td>
-<td>Sets the GPU Agent Docker image pull policy.</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.image.repository</td>
-<td>string</td>
-<td><code>"ghcr.io/walkai-org/nos-gpu-agent"</code></td>
-<td>Sets the GPU Agent Docker image.</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.image.tag</td>
-<td>string</td>
-<td><code>""</code></td>
-<td>Overrides the GPU Agent image tag whose default is the chart appVersion.</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.logLevel</td>
-<td>int</td>
-<td><code>0</code></td>
-<td>The level of log of the GPU Agent. Zero corresponds to <code>info</code>, while values greater or equal than 1 corresponds to higher debug levels. <strong>Must be &gt;= 0</strong>.</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.reportConfigIntervalSeconds</td>
-<td>int</td>
-<td><code>10</code></td>
-<td>Interval at which the mig-agent will report to k8s status of the GPUs of the Node</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.resources</td>
-<td>object</td>
-<td><code>{"limits":{"cpu":"100m","memory":"128Mi"}}</code></td>
-<td>Sets the resource requests and limits of the GPU Agent container.</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.runtimeClassName</td>
-<td>string</td>
-<td><code>nil</code></td>
-<td>The container runtime class name to use for the GPU Agent container.</td>
-</tr>
-<tr>
-<td>gpuPartitioner.gpuAgent.tolerations</td>
-<td>list</td>
-<td><code>[{"effect":"NoSchedule","key":"kubernetes.azure.com/scalesetpriority","operator":"Equal","value":"spot"}]</code></td>
-<td>Sets the tolerations of the GPU Agent Pod.</td>
 </tr>
 <tr>
 <td>gpuPartitioner.image.pullPolicy</td>
