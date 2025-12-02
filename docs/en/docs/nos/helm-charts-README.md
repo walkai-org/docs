@@ -31,10 +31,10 @@ The open-source platform for running AI workloads on k8s in an optimized way, bo
 | clusterInfoExporter.apiClient.namespace | string | `"walkai"` | Namespace where the API client ServiceAccount and token Secret live. |
 | clusterInfoExporter.apiClient.serviceAccountName | string | `"api-client"` | Name of the API client ServiceAccount. |
 | clusterInfoExporter.apiClient.tokenSecretName | string | `"api-client-permanent-token"` | Name of the long-lived ServiceAccount token Secret for the API client. |
-| clusterInfoExporter.config.endpoint | string | `"https://example.com/cluster/insights"` | API endpoint that receives cluster information payloads. |
+| clusterInfoExporter.config.endpoint | string | `""` | API endpoint that receives cluster information payloads (exporter deploys only when set). |
 | clusterInfoExporter.config.httpTimeout | string | `"10s"` | HTTP timeout for report requests. |
 | clusterInfoExporter.config.interval | string | `"10s"` | Interval between reports (e.g. 10s, 5m). |
-| clusterInfoExporter.enabled | bool | `true` | Enable or disable the Cluster Info Exporter DaemonSet. |
+| clusterInfoExporter.enabled | bool | `false` | Enable or disable the Cluster Info Exporter DaemonSet (requires `clusterInfoExporter.config.endpoint`). |
 | clusterInfoExporter.fullnameOverride | string | `""` | Overrides the fully qualified name of the Cluster Info Exporter resources. |
 | clusterInfoExporter.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy of the Cluster Info Exporter container. |
 | clusterInfoExporter.image.repository | string | `"ghcr.io/walkai-org/nos-cluster-info-exporter"` | Repository of the Cluster Info Exporter image. |
@@ -55,22 +55,12 @@ The open-source platform for running AI workloads on k8s in an optimized way, bo
 | clusterInfoExporter.serviceAccount.name | string | `""` | Overrides the Cluster Info Exporter ServiceAccount name. |
 | clusterInfoExporter.tolerations | list | `[{"effect":"NoSchedule","key":"node-role.kubernetes.io/master","operator":"Exists"},{"effect":"NoSchedule","key":"node-role.kubernetes.io/control-plane","operator":"Exists"}]` | Tolerations applied to the Cluster Info Exporter Pods. |
 | gpuPartitioner.affinity | object | `{}` | Sets the affinity config of the GPU Partitioner Pod. |
-| gpuPartitioner.batchWindowIdleSeconds | int | `10` | Idle seconds before the GPU partitioner processes the current batch if no new pending Pods are created, and the timeout has not been reached.  Higher values make the GPU partitioner will potentially take into account more pending Pods when deciding the GPU partitioning plan, but the partitioning will be performed less frequently |
-| gpuPartitioner.batchWindowTimeoutSeconds | int | `60` | Timeout of the window used by the GPU partitioner for batching pending Pods.  Higher values make the GPU partitioner will potentially take into account more pending Pods when deciding the GPU partitioning plan, but the partitioning will be performed less frequently |
+| gpuPartitioner.requeueIntervalSeconds | int | `10` | Interval at which the GPU partitioner reconciler wakes up even without new Pod events |
 | gpuPartitioner.devicePlugin.config.name | string | `"nos-device-plugin-configs"` | Name of the ConfigMap containing the NVIDIA Device Plugin configuration files. It must be equal to the value "devicePlugin.config.name" of the Helm chart used for deploying the NVIDIA GPU Operator. |
 | gpuPartitioner.devicePlugin.config.namespace | string | `"nebuly-nvidia"` | Namespace of the ConfigMap containing the NVIDIA Device Plugin configuration files. It must be equal to the namespace where the Nebuly NVIDIA Device Plugin has been deployed to. |
 | gpuPartitioner.devicePlugin.configUpdateDelaySeconds | int | `5` | Duration of the delay between when the new partitioning config is computed and when it is sent to the NVIDIA device plugin. Since the config is provided to the plugin as a mounted ConfigMap, this delay is required to ensure that the updated ConfigMap is propagated to the mounted volume. |
 | gpuPartitioner.enabled | bool | `true` | Enable or disable the `nos gpu partitioner` |
 | gpuPartitioner.fullnameOverride | string | `""` |  |
-| gpuPartitioner.gpuAgent | object | - | Configuration of the GPU Agent component of the GPU Partitioner. |
-| gpuPartitioner.gpuAgent.image.pullPolicy | string | `"IfNotPresent"` | Sets the GPU Agent Docker image pull policy. |
-| gpuPartitioner.gpuAgent.image.repository | string | `"ghcr.io/walkai-org/nos-gpu-agent"` | Sets the GPU Agent Docker image. |
-| gpuPartitioner.gpuAgent.image.tag | string | `""` | Overrides the GPU Agent image tag whose default is the chart appVersion. |
-| gpuPartitioner.gpuAgent.logLevel | int | `0` | The level of log of the GPU Agent. Zero corresponds to `info`, while values greater or equal than 1 corresponds to higher debug levels. **Must be >= 0**. |
-| gpuPartitioner.gpuAgent.reportConfigIntervalSeconds | int | `10` | Interval at which the mig-agent will report to k8s status of the GPUs of the Node |
-| gpuPartitioner.gpuAgent.resources | object | `{"limits":{"cpu":"100m","memory":"128Mi"}}` | Sets the resource requests and limits of the GPU Agent container. |
-| gpuPartitioner.gpuAgent.runtimeClassName | string | `nil` | The container runtime class name to use for the GPU Agent container. |
-| gpuPartitioner.gpuAgent.tolerations | list | `[{"effect":"NoSchedule","key":"kubernetes.azure.com/scalesetpriority","operator":"Equal","value":"spot"}]` | Sets the tolerations of the GPU Agent Pod. |
 | gpuPartitioner.image.pullPolicy | string | `"IfNotPresent"` | Sets the GPU Partitioner Docker image pull policy. |
 | gpuPartitioner.image.repository | string | `"ghcr.io/walkai-org/nos-gpu-partitioner"` | Sets the GPU Partitioner Docker image. |
 | gpuPartitioner.image.tag | string | `""` | Overrides the GPU Partitioner image tag whose default is the chart appVersion. |
