@@ -8,7 +8,7 @@ hide:
 # Prerequisites
 
 1. Kubernetes version 1.23 or newer
-2. [NVIDIA GPU Operator](#NVIDIA-GPU-Operator)
+2. NVIDIA GPU Operator
 3. [Cert Manager](https://github.com/cert-manager/cert-manager) (optional, but recommended)
 
 ## NVIDIA GPU Operator

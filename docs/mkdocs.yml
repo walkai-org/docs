@@ -7,7 +7,7 @@ repo_name: walkai-nos
 plugins:
   - search
   - mermaid2
-  
+
 markdown_extensions:
   - admonition
   - def_list
@@ -16,9 +16,9 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
-            - name: mermaid
-              class: mermaid
-              format: !!python/name:mermaid2.fence_mermaid_custom
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
 
   - pymdownx.highlight:
       anchor_linenums: true
@@ -33,13 +33,13 @@ markdown_extensions:
 theme:
   name: material
   palette:
-    - media: '(prefers-color-scheme: light)'
+    - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: white
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-    - media: '(prefers-color-scheme: dark)'
+    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: white
       toggle:
@@ -60,26 +60,22 @@ theme:
 
 nav:
   - Overview: overview.md
-  - VPN: vpn.md
+  - Modules:
+      - nos:
+          - Overview: nos/overview.md
+          - Prerequisites: nos/prerequisites.md
+          - Installation: nos/installation.md
+          - Configuration: nos/configuration.md
+          - Troubleshooting: nos/troubleshooting.md
+      - Application:
+          - Overview: app/overview.md
+          - Prerequisites: app/prerequisites.md
+          - Installation: app/installation.md
+          - Configuration: app/configuration.md
+      - Command-Line tool:
+          - Overview: cli/overview.md
+          - Prerequisites: cli/prerequisites.md
+          - Installation: cli/installation.md
+          - Configuration: cli/configuration.md
   - Concepts:
-    - Jobs: concepts/jobs.md
-    - Flowcharts:
-      - GPU Partitioner: concepts/gpu_partitioner.md
-      - MIG Agent: concepts/mig_agent.md
-  - Modules: 
-    - nos: 
-      - Overview: nos/overview.md
-      - Prerequisites: nos/prerequisites.md
-      - Installation: nos/installation.md
-      - Configuration: nos/configuration.md
-      - Troubleshooting: nos/troubleshooting.md
-    - Application: 
-      - Overview: app/overview.md
-      - Prerequisites: app/prerequisites.md
-      - Installation: app/installation.md
-      - Configuration: app/configuration.md
-    - Command-Line tool: 
-      - Overview: cli/overview.md
-      - Prerequisites: cli/prerequisites.md
-      - Installation: cli/installation.md
-      - Configuration: cli/configuration.md
+      - Jobs: concepts/jobs.md
