@@ -1,6 +1,6 @@
 # nos
 
-`walk:ai nos` is the in-cluster component of the platform. It runs on your Kubernetes cluster and is responsible for two main tasks: dynamically partitioning GPUs so that Pods can share them efficiently, and exporting GPU and workload telemetry that powers the `walk:ai` application.
+[`walk:ai nos`](https://github.com/walkai-org/walkai-nos) is the in-cluster component of the platform. It runs on your Kubernetes cluster and is responsible for two main tasks: dynamically partitioning GPUs so that Pods can share them efficiently, and exporting GPU and workload telemetry that powers the `walk:ai` application.
 
 ## Origin and architecture
 

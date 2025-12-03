@@ -1,6 +1,6 @@
 # Application
 
-The `walk:ai` application is the control plane of the platform. It exposes an HTTP API and a browser-based console to submit and monitor jobs, manage data, and inspect how GPUs are being used across the cluster.
+The [`walk:ai application`](https://github.com/walkai-org/walkai-api) is the control plane of the platform. It exposes an HTTP API and a browser-based console to submit and monitor jobs, manage data, and inspect how GPUs are being used across the cluster.
 
 ## Features
 

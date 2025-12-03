@@ -1,6 +1,6 @@
 # Command-line tool
 
-The `walkai` CLI is an opinionated companion to the platform that focuses on two things: turning Python projects into container images, and interacting with `walk:ai` from the terminal.
+The [`walk:ai CLI`](https://github.com/walkai-org/walkai-cli) is an opinionated companion to the platform that focuses on two things: turning Python projects into container images, and interacting with `walk:ai` from the terminal.
 
 **Features**
 

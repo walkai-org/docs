@@ -1,8 +1,8 @@
 site_name: walk:ai
 site_url: https://walkai-org.github.io/docs/
 docs_dir: ./en/docs
-repo_url: https://github.com/walkai-org/walkai-nos
-repo_name: walkai-nos
+repo_url: https://github.com/walkai-org/
+repo_name: walkai-org
 
 plugins:
   - search
@@ -79,3 +79,6 @@ nav:
           - Configuration: cli/configuration.md
   - Concepts:
       - Jobs: concepts/jobs.md
+      - Flowcharts:
+        - GPU Partitioner: concepts/gpu_partitioner.md
+        - MIG Agent: concepts/mig_agent.md
