@@ -1108,17 +1108,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#priority-awareness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Priority Awareness
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#values" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1162,8 +1151,6 @@
 <ul>
 <li><a href="https://github.com/walkai-org/walkai-nos">https://github.com/walkai-org/walkai-nos</a></li>
 </ul>
-<h2 id="priority-awareness">Priority Awareness</h2>
-<p>The chart can provision four PriorityClasses for GPU workloads: <code>nos-priority-low</code> (0), <code>nos-priority-medium</code> (1000, global default), <code>nos-priority-high</code> (2000), and <code>nos-priority-extra-high</code> (3000). Preemption is disabled on all of them. The GPU partitioner plans MIG repartitioning in priority order (age tie-breaker) and will not plan lower-priority pods if a higher-priority pod cannot be satisfied. You can disable or override these classes via the <code>priorityClasses</code> values.</p>
 <h2 id="values">Values</h2>
 <table>
 <thead>

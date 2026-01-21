@@ -547,6 +547,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#priority-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Priority Awareness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#available-mig-geometries" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1213,6 +1224,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#priority-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Priority Awareness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#available-mig-geometries" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1337,6 +1359,8 @@ In this section we focus on some of the values that you would typically want to 
 <li><code>requeueIntervalSeconds</code>: how often the controller wakes up even if no new Pod events occur.</li>
 </ul>
 <p>Shorter intervals react faster to changes (for example when the scheduler no longer emits events) at the cost of more frequent reconciliation cycles. Longer intervals reduce churn but defer partitioning updates.</p>
+<h2 id="priority-awareness">Priority Awareness</h2>
+<p>The chart can provision four PriorityClasses for GPU workloads: <code>nos-priority-low</code> (0), <code>nos-priority-medium</code> (1000, global default), <code>nos-priority-high</code> (2000), and <code>nos-priority-extra-high</code> (3000). Preemption is disabled on all of them. The GPU partitioner plans MIG repartitioning in priority order (age tie-breaker) and will not plan lower-priority pods if a higher-priority pod cannot be satisfied. You can disable or override these classes via the <code>priorityClasses</code> values.</p>
 <h2 id="available-mig-geometries">Available MIG geometries</h2>
 <p>The GPU Partitioner determines the most proper partitioning plan to apply by considering the possible MIG geometries allowed for each of the GPU models present in the cluster.</p>
 <p>You can set the MIG geometries supported by each GPU model by editing the <code>gpuPartitioner.knownMigGeometries</code> value of the <a href="../helm-charts-README/">installation chart</a>.</p>
