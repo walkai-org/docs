@@ -19,7 +19,7 @@ Then install the chart, pointing Helm at your values.yml:
 
 ```bash
 helm install oci://ghcr.io/walkai-org/helm-charts/nos \                                                                      
-  --version 0.0.3 \
+  --version 0.0.9 \
   --namespace nos-system \
   --generate-name \
   --create-namespace \

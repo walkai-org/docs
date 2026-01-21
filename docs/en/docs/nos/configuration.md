@@ -11,6 +11,10 @@ The GPU partitioner periodically scans all pending, unschedulable pods that requ
 
 Shorter intervals react faster to changes (for example when the scheduler no longer emits events) at the cost of more frequent reconciliation cycles. Longer intervals reduce churn but defer partitioning updates.
 
+## Priority Awareness
+
+The chart can provision four PriorityClasses for GPU workloads: `nos-priority-low` (0), `nos-priority-medium` (1000, global default), `nos-priority-high` (2000), and `nos-priority-extra-high` (3000). Preemption is disabled on all of them. The GPU partitioner plans MIG repartitioning in priority order (age tie-breaker) and will not plan lower-priority pods if a higher-priority pod cannot be satisfied. You can disable or override these classes via the `priorityClasses` values.
+
 
 ## Available MIG geometries
 

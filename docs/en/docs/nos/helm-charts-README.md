@@ -1,19 +1,12 @@
 # nos
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.2](https://img.shields.io/badge/AppVersion-0.1.2-informational?style=flat-square)
+![Version: 0.0.9](https://img.shields.io/badge/Version-0.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.9](https://img.shields.io/badge/AppVersion-0.0.9-informational?style=flat-square)
 
 The open-source platform for running AI workloads on k8s in an optimized way, both in terms of hardware utilization and workload performance.
 
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| Michele Zanotti | <m.zanotti@nebuly.com> | <github.com/nebuly-ai> |
-| Diego Fiori | <d.fiori@nebuly.com> | <github.com/diegofiori> |
-
 ## Source Code
 
-* <https://github.com/nebuly-ai/nos>
+* <https://github.com/walkai-org/walkai-nos>
 
 ## Values
 
