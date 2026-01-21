@@ -3,7 +3,7 @@
 You can customize the GPU Partitioner settings by editing the values file of the [nos](helm-charts-README.md) Helm chart.
 In this section we focus on some of the values that you would typically want to customize.
 
-## Pods batch size
+## Requeue interval
 
 The GPU partitioner periodically scans all pending, unschedulable pods that request MIG resources and evaluates whether a different partitioning would make them schedulable. You can control how often this happens with:
 
@@ -14,7 +14,7 @@ Shorter intervals react faster to changes (for example when the scheduler no lon
 
 ## Available MIG geometries
 
-The GPU Partitioner determines the most proper partitioning plan to apply by considering the possible MIG geometries allowed each of the GPU models present in the cluster.
+The GPU Partitioner determines the most proper partitioning plan to apply by considering the possible MIG geometries allowed for each of the GPU models present in the cluster.
 
 You can set the MIG geometries supported by each GPU model by editing the `gpuPartitioner.knownMigGeometries` value of the [installation chart](helm-charts-README.md).
 
@@ -34,7 +34,7 @@ The MIG Agent exposes to the GPU Partitioner the used/free MIG resources of all 
 - `nos.nebuly.com/status-gpu-<index>-<mig-profile>-free: <quantity>`
 - `nos.nebuly.com/status-gpu-<index>-<mig-profile>-used: <quantity>`
 
-The MIG Agent also watches the node's annotations and, every time there desired MIG partitioning specified by the GPU Partitioner does not match the current state, it tries to apply it by creating and deleting the MIG profiles on the target GPUs. The GPU Partitioner specifies the desired MIG geometry of the GPUs of a node through annotations in the following format:
+The MIG Agent also watches the node's annotations and, every time the desired MIG partitioning specified by the GPU Partitioner does not match the current state, it tries to apply it by creating and deleting the MIG profiles on the target GPUs. The GPU Partitioner specifies the desired MIG geometry of the GPUs of a node through annotations in the following format:
 
 `nos.nebuly.com/spec-gpu-<index>-<mig-profile>: <quantity>`
 
