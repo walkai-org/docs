@@ -72,6 +72,7 @@ nav:
           - Prerequisites: app/prerequisites.md
           - Installation: app/installation.md
           - Configuration: app/configuration.md
+          - Deployment: app/deployment.md
       - Command-Line tool:
           - Overview: cli/overview.md
           - Prerequisites: cli/prerequisites.md
