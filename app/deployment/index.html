@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://walkai-org.github.io/docs/app/configuration/">
+        <link rel="canonical" href="https://walkai-org.github.io/docs/app/deployment/">
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../configuration/">
       
       
-        <link rel="next" href="../deployment/">
+        <link rel="next" href="../../cli/overview/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Configuration - walk:ai</title>
+        <title>Deployment - walk:ai</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration" class="md-skip">
+        <a href="#deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuration
+              Deployment
             
           </span>
         </div>
@@ -670,37 +670,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Configuration
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
         
   
   
@@ -716,48 +689,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secrets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Secrets
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -767,10 +698,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../deployment/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -786,6 +726,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1195,36 +1136,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secrets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Secrets
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1300,29 +1211,13 @@
   
 
 
-<h1 id="configuration">Configuration</h1>
-<p>After creating your repository from the template, configure the GitHub Actions variables and secrets in:
-<code>Settings</code> -&gt; <code>Secrets and variables</code> -&gt; <code>Actions</code>.</p>
-<p><strong>Note:</strong> workflows authenticate to AWS by assuming the role referenced in the <code>AWS_DEPLOY_ROLE_ARN</code> secret, so make sure it matches the IAM role created in the prerequisites.</p>
-<h2 id="variables">Variables</h2>
-<ul>
-<li><code>AWS_S3_TERRAFORM_BUCKET</code>: name of the S3 bucket defined in the prerequisites for Terraform state.</li>
-<li><code>BOOTSTRAP_FIRST_USER</code>: email address of the initial admin user.</li>
-<li><code>VPC_CIDR</code>: address space for the VPC. Default is <code>172.31.0.0/16</code>.</li>
-<li><code>K8S_CLUSTER_URL</code>: URL of the Kubernetes cluster.</li>
-<li><code>BASE_DOMAIN</code>: your registered web domain.</li>
-<li><code>EXTERNAL_DNS</code>: <code>true</code> if the domain is already managed externally, <code>false</code> if the root domain must be managed by this deployment.</li>
-<li><code>SMTP_HOST</code>: hostname of your SMTP provider (for example, <code>smtp.azurecomm.net</code>).</li>
-<li><code>SMTP_PORT</code>: SMTP port that supports STARTTLS (commonly <code>587</code>, but some providers use <code>25</code> or <code>2525</code>).</li>
-<li><code>SMTP_USERNAME</code>: SMTP username (for example, <code>apikey</code> or <code>user@mycompany.com</code>).</li>
-<li><code>MAIL_FROM</code>: sender shown in emails (recommended format: <code>Name &lt;email@domain&gt;</code>).</li>
-</ul>
-<h2 id="secrets">Secrets</h2>
-<ul>
-<li><code>AWS_DEPLOY_ROLE_ARN</code>: ARN of the IAM role created in the prerequisites.</li>
-<li><code>K8S_CLUSTER_TOKEN</code>: token used to access the Kubernetes cluster.</li>
-<li><code>SMTP_PASSWORD</code>: password or token for <code>SMTP_USERNAME</code>.</li>
-</ul>
+<h1 id="deployment">Deployment</h1>
+<p>After configuring all repository variables and secrets, run the GitHub Actions workflow <code>Apply Infra (Bootstrap)</code>.
+To run a workflow, go to the <strong>Actions</strong> tab, select it, click <strong>Run workflow</strong>, and confirm the run.</p>
+<p>Once it finishes, open the job named <code>show_name_servers</code> and copy the four name server values it prints. Before continuing, you must add those name servers in your domain manager (if you already use one) under the <code>walkai</code> subdomain of your <code>BASE_DOMAIN</code>. If you manage the domain at the registrar, add them there instead.</p>
+<p>When the name servers are in place, run the <code>Apply Infra (Finalize HTTPS)</code> workflow the same way as before.</p>
+<p>Finally, check the inbox for <code>BOOTSTRAP_FIRST_USER</code> and follow the instructions in that email to complete the setup.</p>
+<p><strong>Optional:</strong> if you need to tear down the infrastructure, you can run the <code>Destroy Infra</code> workflow.</p>
 
 
 

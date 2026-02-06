@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wip" class="md-skip">
+        <a href="#prerequisites" class="md-skip">
           Skip to content
         </a>
       
@@ -220,6 +220,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -704,6 +706,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1096,7 +1126,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1118,6 +1150,8 @@
             <div class="md-content" data-md-component="content">
               
                 
+
+  
 
 
 
@@ -1177,13 +1211,26 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="wip">WIP</h1>
+<h1 id="prerequisites">Prerequisites</h1>
+<p>Before running the automatic deployment pipeline, make sure you have:</p>
+<ol>
+<li>An SMTP email service with STARTTLS and username/password authentication.</li>
+<li>A registered web domain (for example, <code>mycompany.com</code>).</li>
+<li>A GitHub account.</li>
+<li>An AWS account.</li>
+<li>An S3 bucket in that AWS account to store the Terraform state.</li>
+<li>An IAM role in that AWS account with the required <a href="../../walkai-infra-policy.json">custom policy</a> attached (open the JSON file and attach it in IAM).</li>
+</ol>
+<p><strong>Note:</strong> before attaching the policy, replace <code>&lt;your-terraform-state-bucket&gt;</code> in the first two statements with the S3 bucket name from item 5.</p>
+<p>The policy follows the principle of least privilege, granting only the permissions needed by the deployment pipeline.</p>
 
 
 
@@ -1191,8 +1238,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
