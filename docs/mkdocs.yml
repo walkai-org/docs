@@ -78,8 +78,3 @@ nav:
           - Prerequisites: cli/prerequisites.md
           - Installation: cli/installation.md
           - Configuration: cli/configuration.md
-  - Concepts:
-      - Jobs: concepts/jobs.md
-      - Flowcharts:
-        - GPU Partitioner: concepts/gpu_partitioner.md
-        - MIG Agent: concepts/mig_agent.md
