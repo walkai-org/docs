@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://walkai-org.github.io/</loc>
+         <loc>https://walkai-org.github.io/docs/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/overview/</loc>
+         <loc>https://walkai-org.github.io/docs/overview/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/vpn/</loc>
+         <loc>https://walkai-org.github.io/docs/vpn/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/app/configuration/</loc>
+         <loc>https://walkai-org.github.io/docs/app/configuration/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/app/deployment/</loc>
+         <loc>https://walkai-org.github.io/docs/app/deployment/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/app/installation/</loc>
+         <loc>https://walkai-org.github.io/docs/app/installation/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/app/overview/</loc>
+         <loc>https://walkai-org.github.io/docs/app/overview/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/app/prerequisites/</loc>
+         <loc>https://walkai-org.github.io/docs/app/prerequisites/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/cli/configuration/</loc>
+         <loc>https://walkai-org.github.io/docs/cli/configuration/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/cli/installation/</loc>
+         <loc>https://walkai-org.github.io/docs/cli/installation/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/cli/overview/</loc>
+         <loc>https://walkai-org.github.io/docs/cli/overview/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/cli/prerequisites/</loc>
+         <loc>https://walkai-org.github.io/docs/cli/prerequisites/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/nos/configuration/</loc>
+         <loc>https://walkai-org.github.io/docs/nos/configuration/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/nos/helm-charts-README/</loc>
+         <loc>https://walkai-org.github.io/docs/nos/helm-charts-README/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/nos/installation/</loc>
+         <loc>https://walkai-org.github.io/docs/nos/installation/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/nos/multi-instance-gpu/</loc>
+         <loc>https://walkai-org.github.io/docs/nos/multi-instance-gpu/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/nos/overview/</loc>
+         <loc>https://walkai-org.github.io/docs/nos/overview/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/nos/prerequisites/</loc>
+         <loc>https://walkai-org.github.io/docs/nos/prerequisites/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
     <url>
-         <loc>https://walkai-org.github.io/nos/troubleshooting/</loc>
+         <loc>https://walkai-org.github.io/docs/nos/troubleshooting/</loc>
          <lastmod>2026-02-07</lastmod>
     </url>
 </urlset>
