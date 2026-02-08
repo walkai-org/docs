@@ -1016,8 +1016,14 @@
 <ol>
 <li>Open the <a href="https://github.com/walkai-org/walkai-infra">walkai-infra</a> template repository.</li>
 <li>Click <strong>Use this template</strong> to create your own repository based on it, and name it as you prefer.</li>
+<li>In AWS IAM, create a new role for GitHub Actions and set the trust relationship policy using <a href="../../walkai-infra-trust-policy.json">this JSON</a>.</li>
+<li>Before creating the trust policy, replace <code>&lt;your-aws-account-id&gt;</code> and <code>&lt;org&gt;/&lt;repo&gt;</code> with your AWS account ID and the GitHub repository you created in step 2.</li>
+<li>Create a custom policy from <a href="../../walkai-infra-policy.json">this JSON</a>.</li>
+<li>Before creating the policy, replace <code>&lt;your-terraform-state-bucket&gt;</code> in the first two statements with the S3 bucket name from the prerequisites.</li>
+<li>Attach the custom policy to the role. The policy follows the principle of least privilege, granting only the permissions needed by the deployment pipeline.</li>
+<li>Save the role ARN. You will set it as the <code>AWS_DEPLOY_ROLE_ARN</code> secret in the configuration.</li>
 </ol>
-<p>You will use this repository in the next steps to configure GitHub Actions and run the deployment workflows.</p>
+<p>You will use this repository in the next sections to configure GitHub Actions and run the deployment workflows.</p>
 
 
 

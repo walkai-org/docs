@@ -3,7 +3,7 @@
 After creating your repository from the template, configure the GitHub Actions variables and secrets in:
 `Settings` -> `Secrets and variables` -> `Actions`.
 
-**Note:** workflows authenticate to AWS by assuming the role referenced in the `AWS_DEPLOY_ROLE_ARN` secret, so make sure it matches the IAM role created in the prerequisites.
+**Note:** workflows authenticate to AWS by assuming the role referenced in the `AWS_DEPLOY_ROLE_ARN` secret, so make sure it matches the IAM role created during installation.
 
 ## Variables
 
@@ -20,7 +20,7 @@ After creating your repository from the template, configure the GitHub Actions v
 
 ## Secrets
 
-- `AWS_DEPLOY_ROLE_ARN`: ARN of the IAM role created in the prerequisites.
+- `AWS_DEPLOY_ROLE_ARN`: ARN of the IAM role created during installation.
 - `K8S_CLUSTER_TOKEN`: token used to access the Kubernetes cluster.
 - `SMTP_PASSWORD`: password or token for `SMTP_USERNAME`.
 

@@ -14,8 +14,8 @@ Before running the automatic deployment pipeline, make sure you have:
 3. A GitHub account.
 4. An AWS account.
 5. An S3 bucket in that AWS account to store the Terraform state.
-6. An IAM role in that AWS account with the required [custom policy](../walkai-infra-policy.json) attached (open the JSON file and attach it in IAM).
+6. An IAM OpenID Connect identity provider for GitHub Actions (`token.actions.githubusercontent.com`) in that AWS account.
 
-**Note:** before attaching the policy, replace `<your-terraform-state-bucket>` in the first two statements with the S3 bucket name from item 5.
+The identity provider is created once per AWS account. Follow the official GitHub guide for AWS OIDC setup: [Configuring OpenID Connect in AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws).
 
-The policy follows the principle of least privilege, granting only the permissions needed by the deployment pipeline.
+During installation, you will use this provider to create the deployment role and reference the S3 bucket name in its policy.
