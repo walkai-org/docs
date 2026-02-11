@@ -1045,6 +1045,9 @@
 <p class="admonition-title">Note</p>
 <p>You can find all the available configuration values in the Chart <a href="../helm-charts-README/">documentation</a>.</p>
 </div>
+<p>After that, you can fetch the token the application uses for its cluster configuration:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>api-client-permanent-token<span class="w"> </span>-n<span class="w"> </span>walkai<span class="w">   </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.data.token}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
+</code></pre></div></p>
 
 
 
