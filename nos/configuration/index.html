@@ -1186,7 +1186,10 @@ In this section we focus on some of the values that you would typically want to 
 <ul>
 <li><code>requeueIntervalSeconds</code>: how often the controller wakes up even if no new Pod events occur.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Shorter intervals react faster to changes (for example when the scheduler no longer emits events) at the cost of more frequent reconciliation cycles. Longer intervals reduce churn but defer partitioning updates.</p>
+</div>
 <h2 id="priority-awareness">Priority Awareness</h2>
 <p>The chart can provision four PriorityClasses for GPU workloads: <code>nos-priority-low</code> (0), <code>nos-priority-medium</code> (1000, global default), <code>nos-priority-high</code> (2000), and <code>nos-priority-extra-high</code> (3000). Preemption is disabled on all of them. The GPU partitioner plans MIG repartitioning in priority order (age tie-breaker) and will not plan lower-priority pods if a higher-priority pod cannot be satisfied. You can disable or override these classes via the <code>priorityClasses</code> values.</p>
 <h2 id="available-mig-geometries">Available MIG geometries</h2>
@@ -1204,13 +1207,16 @@ In this section we focus on some of the values that you would typically want to 
 </ul>
 <p>The MIG Agent also watches the node's annotations and, every time the desired MIG partitioning specified by the GPU Partitioner does not match the current state, it tries to apply it by creating and deleting the MIG profiles on the target GPUs. The GPU Partitioner specifies the desired MIG geometry of the GPUs of a node through annotations in the following format:</p>
 <p><code>nos.nebuly.com/spec-gpu-&lt;index&gt;-&lt;mig-profile&gt;: &lt;quantity&gt;</code></p>
-<p>Note that in some cases the MIG Agent might not be able to apply the desired MIG geometry specified by the GPU Partitioner. This can happen for two reasons:</p>
+<p>In some cases the MIG Agent might not be able to apply the desired MIG geometry specified by the GPU Partitioner. This can happen for two reasons:</p>
 <ol>
 <li>the MIG Agent never deletes MIG resources being in use by a Pod</li>
 <li>some MIG geometries require the MIG profiles to be created in a certain order, and due to reason (1) the MIG Agent might not be able to delete and re-create the existing MIG profiles in the order required by the new MIG geometry.</li>
 </ol>
 <p>In these cases, the MIG Agent tries to apply the desired partitioning and if it fails it rolls-back to its previous state.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>For further information regarding NVIDIA MIG and its integration with Kubernetes, please refer to the <a href="https://docs.nvidia.com/datacenter/tesla/pdf/NVIDIA_MIG_User_Guide.pdf">NVIDIA MIG User Guide</a> and to the <a href="https://docs.nvidia.com/datacenter/cloud-native/kubernetes/mig-k8s.html">MIG Support in Kubernetes</a> official documentation provided by NVIDIA.</p>
+</div>
 
 
 

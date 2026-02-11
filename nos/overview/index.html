@@ -1134,7 +1134,10 @@
 <li>Given the current and pending workload, the GPU Partitioner computes the best MIG configuration it can apply to fit as many of those Pods as possible.</li>
 <li>The MIG Agent then applies that configuration on the nodes, creating or tearing down MIG instances as needed.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Under the hood, the GPU partitioning is implemented using <a href="../multi-instance-gpu/">NVIDIA Multi-Instance GPU (MIG)</a>, with <a href="../multi-instance-gpu/#how-nos-improves-mig-based-scheduling">runtime reconfiguration and scheduling improvements</a></p>
+</div>
 <h2 id="telemetry-and-cluster-visibility">Telemetry and cluster visibility</h2>
 <p>Beyond partitioning GPUs, <code>walk:ai nos</code> also acts as the telemetry layer of the platform. The in-cluster agents:</p>
 <ul>
@@ -1142,7 +1145,10 @@
 <li>Observe Jobs, Pods and their GPU requests.</li>
 <li>Periodically push a summarized view of this state to an api endpoint you configure during installation.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>This funcionality is opt-in. If you do not declare the configuration related to it, the daemonset will not be deployed.</p>
+</div>
 
 
 
