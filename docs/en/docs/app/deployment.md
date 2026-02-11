@@ -9,4 +9,5 @@ When the name servers are in place, run the `Apply Infra (Finalize HTTPS)` workf
 
 Finally, check the inbox for `BOOTSTRAP_FIRST_USER` and follow the instructions in that email to complete the setup.
 
-**Optional:** if you need to tear down the infrastructure, you can run the `Destroy Infra` workflow.
+!!! tip
+    If you need to tear down the infrastructure, you can run the `Destroy Infra` workflow.

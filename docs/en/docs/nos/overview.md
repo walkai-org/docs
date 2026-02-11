@@ -17,7 +17,8 @@ The partitioning is adjusted in real time:
 - Given the current and pending workload, the GPU Partitioner computes the best MIG configuration it can apply to fit as many of those Pods as possible.
 - The MIG Agent then applies that configuration on the nodes, creating or tearing down MIG instances as needed.
 
-Under the hood, the GPU partitioning is implemented using [NVIDIA Multi-Instance GPU (MIG)](multi-instance-gpu.md), with [runtime reconfiguration and scheduling improvements](multi-instance-gpu.md#how-nos-improves-mig-based-scheduling)
+!!!note 
+    Under the hood, the GPU partitioning is implemented using [NVIDIA Multi-Instance GPU (MIG)](multi-instance-gpu.md), with [runtime reconfiguration and scheduling improvements](multi-instance-gpu.md#how-nos-improves-mig-based-scheduling)
 
 ## Telemetry and cluster visibility
 
@@ -27,5 +28,6 @@ Beyond partitioning GPUs, `walk:ai nos` also acts as the telemetry layer of the 
 - Observe Jobs, Pods and their GPU requests.
 - Periodically push a summarized view of this state to an api endpoint you configure during installation.
 
-This funcionality is opt-in. If you do not declare the configuration related to it, the daemonset will not be deployed.
+!!!note
+    This funcionality is opt-in. If you do not declare the configuration related to it, the daemonset will not be deployed.
 

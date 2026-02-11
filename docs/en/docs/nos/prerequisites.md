@@ -8,8 +8,26 @@ hide:
 # Prerequisites
 
 1. Kubernetes version 1.23 or newer
-2. NVIDIA GPU Operator
-3. [Cert Manager](https://github.com/cert-manager/cert-manager) (optional, but recommended)
+2. [MIG](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/) enabled on your GPU
+3. NVIDIA GPU Operator
+4. [Cert Manager](https://github.com/cert-manager/cert-manager) (optional, but recommended)
+
+## Enable MIG
+
+Enable MIG mode on your GPU:
+
+```bash
+sudo nvidia-smi -i 0 -mig 1
+```
+
+Verify that MIG mode is active:
+
+```bash
+nvidia-smi -i 0 -q | grep -A3 "MIG Mode"
+```
+
+!!! note
+    A reboot may be required for the change to take effect.
 
 ## NVIDIA GPU Operator
 
@@ -20,6 +38,7 @@ Create a `values.yml` file with the required tolerations for the `nos.nebuly.com
 You can install the [NVIDIA GPU Operator](https://github.com/NVIDIA/gpu-operator) as follows:
 
 ```bash
+helm repo add nvidia https://helm.ngc.nvidia.com/nvidia && helm repo update
 helm install --wait --generate-name \
      -n gpu-operator --create-namespace \
      nvidia/gpu-operator --version v22.9.0 \

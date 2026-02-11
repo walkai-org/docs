@@ -482,6 +482,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#enable-mig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable MIG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nvidia-gpu-operator" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -995,6 +1006,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#enable-mig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable MIG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nvidia-gpu-operator" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1089,17 +1111,30 @@
 <h1 id="prerequisites">Prerequisites</h1>
 <ol>
 <li>Kubernetes version 1.23 or newer</li>
+<li><a href="https://docs.nvidia.com/datacenter/tesla/mig-user-guide/">MIG</a> enabled on your GPU</li>
 <li>NVIDIA GPU Operator</li>
 <li><a href="https://github.com/cert-manager/cert-manager">Cert Manager</a> (optional, but recommended)</li>
 </ol>
+<h2 id="enable-mig">Enable MIG</h2>
+<p>Enable MIG mode on your GPU:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>nvidia-smi<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span><span class="w"> </span>-mig<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p>Verify that MIG mode is active:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nvidia-smi<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span><span class="w"> </span>-q<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A3<span class="w"> </span><span class="s2">&quot;MIG Mode&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A reboot may be required for the change to take effect.</p>
+</div>
 <h2 id="nvidia-gpu-operator">NVIDIA GPU Operator</h2>
 <p>Before installing <code>nos</code>, you must enable GPU support in your Kubernetes cluster, and we recommend using the NVIDIA GPU Operator for that.</p>
 <p>Create a <code>values.yml</code> file with the required tolerations for the <code>nos.nebuly.com/repartitioning=planned:NoSchedule</code> taint used during GPU repartitioning. You can start from <a href="../../values.yml">values.yml</a> and customize it for your cluster.</p>
 <p>You can install the <a href="https://github.com/NVIDIA/gpu-operator">NVIDIA GPU Operator</a> as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>install<span class="w"> </span>--wait<span class="w"> </span>--generate-name<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">     </span>-n<span class="w"> </span>gpu-operator<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">     </span>nvidia/gpu-operator<span class="w"> </span>--version<span class="w"> </span>v22.9.0<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">     </span>-f<span class="w"> </span>values.yml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>nvidia<span class="w"> </span>https://helm.ngc.nvidia.com/nvidia<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>helm<span class="w"> </span>install<span class="w"> </span>--wait<span class="w"> </span>--generate-name<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">     </span>-n<span class="w"> </span>gpu-operator<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">     </span>nvidia/gpu-operator<span class="w"> </span>--version<span class="w"> </span>v22.9.0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">     </span>-f<span class="w"> </span>values.yml
 </code></pre></div>
 <p>If you set <code>driver.enabled=true</code> in the values file, the GPU Operator will automatically install a recent version of NVIDIA Drivers and CUDA on all the GPU-enabled nodes of your cluster, so you don't have to manually install them.</p>
 <p>For further information you can refer to the <a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/getting-started.html">NVIDIA GPU Operator Documentation</a>.</p>

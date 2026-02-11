@@ -28,4 +28,5 @@ helm install oci://ghcr.io/walkai-org/helm-charts/nos \
 
 If you don't need the telemetry module, you can omit `-f values.yml` and the `ClusterInfoExporter` daemonset will not be deployed.
 
-You can find all the available configuration values in the Chart [documentation](helm-charts-README.md).
+!!!note
+  You can find all the available configuration values in the Chart [documentation](helm-charts-README.md).

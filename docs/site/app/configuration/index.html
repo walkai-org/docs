@@ -1103,7 +1103,10 @@
 <h1 id="configuration">Configuration</h1>
 <p>After creating your repository from the template, configure the GitHub Actions variables and secrets in:
 <code>Settings</code> -&gt; <code>Secrets and variables</code> -&gt; <code>Actions</code>.</p>
-<p><strong>Note:</strong> workflows authenticate to AWS by assuming the role referenced in the <code>AWS_DEPLOY_ROLE_ARN</code> secret, so make sure it matches the IAM role created during installation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Workflows authenticate to AWS by assuming the role referenced in the <code>AWS_DEPLOY_ROLE_ARN</code> secret, so make sure it matches the IAM role created during installation.</p>
+</div>
 <h2 id="variables">Variables</h2>
 <ul>
 <li><code>AWS_S3_TERRAFORM_BUCKET</code>: name of the S3 bucket defined in the prerequisites for Terraform state.</li>

@@ -9,7 +9,8 @@ The GPU partitioner periodically scans all pending, unschedulable pods that requ
 
 - `requeueIntervalSeconds`: how often the controller wakes up even if no new Pod events occur.
 
-Shorter intervals react faster to changes (for example when the scheduler no longer emits events) at the cost of more frequent reconciliation cycles. Longer intervals reduce churn but defer partitioning updates.
+!!!note
+    Shorter intervals react faster to changes (for example when the scheduler no longer emits events) at the cost of more frequent reconciliation cycles. Longer intervals reduce churn but defer partitioning updates.
 
 ## Priority Awareness
 
@@ -42,11 +43,12 @@ The MIG Agent also watches the node's annotations and, every time the desired MI
 
 `nos.nebuly.com/spec-gpu-<index>-<mig-profile>: <quantity>`
 
-Note that in some cases the MIG Agent might not be able to apply the desired MIG geometry specified by the GPU Partitioner. This can happen for two reasons:
+In some cases the MIG Agent might not be able to apply the desired MIG geometry specified by the GPU Partitioner. This can happen for two reasons:
 
 1. the MIG Agent never deletes MIG resources being in use by a Pod
 2. some MIG geometries require the MIG profiles to be created in a certain order, and due to reason (1) the MIG Agent might not be able to delete and re-create the existing MIG profiles in the order required by the new MIG geometry.
 
 In these cases, the MIG Agent tries to apply the desired partitioning and if it fails it rolls-back to its previous state.
 
-For further information regarding NVIDIA MIG and its integration with Kubernetes, please refer to the [NVIDIA MIG User Guide](https://docs.nvidia.com/datacenter/tesla/pdf/NVIDIA_MIG_User_Guide.pdf) and to the [MIG Support in Kubernetes](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/mig-k8s.html) official documentation provided by NVIDIA.
+!!!note 
+    For further information regarding NVIDIA MIG and its integration with Kubernetes, please refer to the [NVIDIA MIG User Guide](https://docs.nvidia.com/datacenter/tesla/pdf/NVIDIA_MIG_User_Guide.pdf) and to the [MIG Support in Kubernetes](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/mig-k8s.html) official documentation provided by NVIDIA.

@@ -25,5 +25,5 @@ This makes dynamic reconfiguration disruptive and hard to use in practice.
 
 `nos` is designed to mitigate these limitations. Through our MIG Agent, it can dynamically reconfigure a GPU’s unused MIG slices at runtime, without touching slices that are currently in use. This allows the cluster to adapt the MIG layout to incoming workloads while keeping existing jobs running undisturbed.
 
-
-You can find out more on how MIG technology works in the official [NVIDIA MIG User Guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/).
+!!!note
+    You can find out more on how MIG technology works in the official [NVIDIA MIG User Guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/).

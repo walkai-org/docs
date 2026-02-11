@@ -8,7 +8,6 @@ The [`walk:ai CLI`](https://github.com/walkai-org/walkai-cli) is an opinionated 
 - Uses a `[tool.walkai]` section in `pyproject.toml` to declare entrypoint, OS dependencies, and ignore paths.
 - Integrates with the `walk:ai` API to submit jobs using those images, passing inputs, secrets and GPU requirements.
 
-For detailed usage references, see the CLI repository and README:
-
-- GitHub: [walkai-org/walkai-cli](https://github.com/walkai-org/walkai-cli?tab=readme-ov-file#walkai-cli)
+!!!note
+    For detailed usage references, see the [CLI repository and README](https://github.com/walkai-org/walkai-cli?tab=readme-ov-file#walkai-cli)
 

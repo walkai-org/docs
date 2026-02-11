@@ -3,7 +3,8 @@
 After creating your repository from the template, configure the GitHub Actions variables and secrets in:
 `Settings` -> `Secrets and variables` -> `Actions`.
 
-**Note:** workflows authenticate to AWS by assuming the role referenced in the `AWS_DEPLOY_ROLE_ARN` secret, so make sure it matches the IAM role created during installation.
+!!! note
+    Workflows authenticate to AWS by assuming the role referenced in the `AWS_DEPLOY_ROLE_ARN` secret, so make sure it matches the IAM role created during installation.
 
 ## Variables
 
