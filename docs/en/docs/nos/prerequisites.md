@@ -10,7 +10,7 @@ hide:
 1. Kubernetes version 1.23 or newer
 2. [MIG](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/) enabled on your GPU
 3. NVIDIA GPU Operator
-4. [Cert Manager](https://github.com/cert-manager/cert-manager) (optional, but recommended)
+4. [Cert Manager](https://cert-manager.io/docs/installation/) (optional, but recommended)
 
 ## Enable MIG
 
@@ -47,4 +47,5 @@ helm install --wait --generate-name \
 
 If you set `driver.enabled=true` in the values file, the GPU Operator will automatically install a recent version of NVIDIA Drivers and CUDA on all the GPU-enabled nodes of your cluster, so you don't have to manually install them.
 
-For further information you can refer to the [NVIDIA GPU Operator Documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/getting-started.html).
+!!! note
+     For further information you can refer to the [NVIDIA GPU Operator Documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/getting-started.html).

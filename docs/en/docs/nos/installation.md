@@ -6,19 +6,25 @@ If you want `nos` to send cluster insights to the `walk:ai` backend (or your own
 
 ```yml
 clusterInfoExporter:
+    enabled: true
     config:
-      enabled: true
       endpoint: https://api.example.com/cluster/insights
-      interval: 30s
-      httpTimeout: 15s
+      interval: 3s
+      httpTimeout: 5s
     secret:
       create: true
       apiToken: "<your-token>"
+gpuPartitioner:
+  migAgent:
+      reportConfigIntervalSeconds: 3
+  preemption:
+    enabled: true
 ```
+
 Then install the chart, pointing Helm at your values.yml:
 
 ```bash
-helm install oci://ghcr.io/walkai-org/helm-charts/nos \                                                                      
+helm install oci://ghcr.io/walkai-org/helm-charts/nos \
   --version 0.0.9 \
   --namespace nos-system \
   --generate-name \
@@ -26,7 +32,13 @@ helm install oci://ghcr.io/walkai-org/helm-charts/nos \
   -f values.yml
 ```
 
-If you don't need the telemetry module, you can omit `-f values.yml` and the `ClusterInfoExporter` daemonset will not be deployed.
+!!! note
+    If you don't need the telemetry module, you can omit `-f values.yml` and the `ClusterInfoExporter` daemonset will not be deployed.
 
-!!!note
-  You can find all the available configuration values in the Chart [documentation](helm-charts-README.md).
+!!! note
+    You can find all the available configuration values in the Chart [documentation](helm-charts-README.md).
+
+After that, you can fetch the token the application uses for its cluster configuration:
+```bash
+kubectl get secret api-client-permanent-token -n walkai   -o jsonpath='{.data.token}' | base64 -d; echo
+```
